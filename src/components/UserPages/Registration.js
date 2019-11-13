@@ -1,7 +1,17 @@
 import React, { Component } from 'react';
-import { Link, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
+import {
+  ListGroup,
+  ListGroupItem,
+  Row,
+  Col,
+  Form,
+  FormInput,
+  FormGroup,
+  Button
+} from 'shards-react';
 
-export default class Registarion extends Component {
+class Registration extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -42,40 +52,66 @@ export default class Registarion extends Component {
       })
       .catch(err => {
         console.error(err);
-        alert('Error in Registration please try again');
+        //alert('Error in Registration please try again');
       });
   };
 
   render() {
     return (
-      <form onSubmit={this.onSubmit}>
-        <h1>Registarion Page</h1>
-        <input
-          type='text'
-          name='userName'
-          placeholder='Enter username'
-          value={this.state.userName}
-          onChange={this.handleInputChange}
-          required
-        />
-        <input
-          type='email'
-          name='email'
-          placeholder='Enter email'
-          value={this.state.email}
-          onChange={this.handleInputChange}
-          required
-        />
-        <input
-          type='password'
-          name='password'
-          placeholder='Enter password'
-          value={this.state.password}
-          onChange={this.handleInputChange}
-          required
-        />
-        <input type='submit' value='Submit' />
-      </form>
+      <ListGroup flush>
+        <ListGroupItem className='p-3'>
+          <Row>
+            <Col>
+              <Form onSubmit={this.onSubmit}>
+                <FormGroup>
+                  <label htmlFor='feUserName'>User Name</label>
+                  <FormInput
+                    type='text'
+                    name='userName'
+                    placeholder='Enter username'
+                    value={this.state.userName}
+                    onChange={this.handleInputChange}
+                    required
+                  />
+                </FormGroup>
+                <FormGroup>
+                  <label htmlFor='feEmailAddress'>Email</label>
+                  <FormInput
+                    id='feEmailAddress'
+                    name='email'
+                    type='email'
+                    placeholder='Email'
+                    value={this.state.email}
+                    onChange={this.handleInputChange}
+                    required
+                  />
+                </FormGroup>
+
+                <FormGroup>
+                  <label htmlFor='fePassword'>Password</label>
+                  <FormInput
+                    id='fePassword'
+                    name='password'
+                    type='password'
+                    placeholder='Password'
+                    value={this.state.password}
+                    onChange={this.handleInputChange}
+                    required
+                  />
+                </FormGroup>
+                <Row form>
+                  <Col md='6' className='form-group'>
+                    <Button type='submit' value='Submit'>
+                      Registration
+                    </Button>
+                  </Col>
+                </Row>
+              </Form>
+            </Col>
+          </Row>
+        </ListGroupItem>
+      </ListGroup>
     );
   }
 }
+export default withRouter(Registration);

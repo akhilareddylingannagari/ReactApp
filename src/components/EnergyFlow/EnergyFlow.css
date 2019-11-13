@@ -1,3 +1,4 @@
+/* Round circle in orange color */
 .circle-container {
   position: relative;
   /* 1 */
@@ -22,6 +23,8 @@
   height: 5em;
   margin: -3em;
 }
+
+/* Images to display in circle */
 .circle-container > :nth-of-type(1) {
   transform: rotate(0deg) translate(10em) rotate(-0deg);
 }
@@ -34,6 +37,7 @@
 .circle-container > :nth-of-type(4) {
   transform: rotate(270deg) translate(10em) rotate(-270deg);
 }
+/* arrow animation */
 .circle-container-animation > :nth-of-type(1) {
   transform: rotate(90deg) translate(7em) rotate(-0deg);
 }
@@ -46,6 +50,7 @@
 .circle-container-animation > :nth-of-type(4) {
   transform: rotate(270deg) translate(2em, 5em) rotate(-270deg);
 }
+/* Lables to display values */
 .circle-container-lbl > :nth-of-type(1) {
   transform: rotate(90deg) translate(7em) rotate(-90deg);
 }
@@ -58,6 +63,7 @@
 .circle-container-lbl > :nth-of-type(4) {
   transform: rotate(250deg) translate(-1em, 5em) rotate(-250deg);
 }
+
 .circle-container img {
   display: block;
   width: 100%;
@@ -88,13 +94,13 @@
 }
 .arrow3 {
   transform: rotate(270deg) !important;
-  left: -28px;
+  left: -25px;
 }
 .arrow4 {
-  transform: rotate(90deg) !important;
+  transform: rotate(270deg) !important;
   right: 0;
-  left: 100px;
-  top: 48px;
+  left: 110px;
+  top: 35px;
 }
 /* .arrow span{
   display: block;
@@ -107,6 +113,7 @@
   animation: animate 2s infinite;
 } */
 
+/* Color of arrows change according to values */
 .classGreen span {
   display: block;
   width: 10px;
@@ -149,20 +156,32 @@
   margin: -10px;
   animation: animate 2s infinite;
 }
+.classWhite span {
+  display: block;
+  width: 1px;
+  height: 1px;
+  border-bottom: 5px solid #ffffff;
+  border-right: 5px solid #ffffff;
+  margin: -10px;
+}
+/* Negative value comes arrow flow reverse direction */
 .arrow3-reverse {
   transform: rotate(90deg) !important;
   left: -28px;
   top: 45px;
 }
-.arrow4-reverse {
-  transform: rotate(270deg) !important;
-  right: 0;
-  left: 120px;
-  top: 35px;
+.arrow1-reverse {
+  transform: rotate(360deg) !important;
+  top: 100px;
+  left: 35px;
 }
+
+/* Zero value */
 .disabled-link {
   pointer-events: none;
 }
+
+/* arrow flow speed and direction */
 .arrow span:nth-child(2) {
   animation-delay: -0.2s;
 }
