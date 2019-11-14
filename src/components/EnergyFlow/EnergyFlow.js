@@ -14,14 +14,14 @@ class EnergyFlow extends React.Component {
       BMS_Charge: 234,
       BMS_Discharge: 245,
       DateTime: 1568937600021,
-      Grid_Power: 1190,
+      Grid_Power: 190,
       GridIpv: 5,
       GridVpv: 238,
       Inverter_Temperature: 23.5,
       InverterID: 'INV0000123456',
       Load_Power: 435,
       Pmeter: 2,
-      SOC: 89,
+      SOC: 5,
       Solar_Power: 142.8,
       SolarIpv1: 0.6,
       SolarIpv2: 0,
@@ -47,26 +47,24 @@ class EnergyFlow extends React.Component {
       }
       this.setState({
         // batteryVoltage: result.Items[0].btime
-
-        Battery_Power: '-345',
+        Battery_Power: Math.round(235 + Math.random() * (230 - 240)),
         BatteryIpv: Math.round(13 + Math.random() * (5 - 15)),
         BatteryVpv: Math.round(40 + Math.random() * (30 - 45)),
         BMS_Charge: Math.round(230 + Math.random() * (225 - 250)),
         BMS_Discharge: Math.round(250 + Math.random() * (200 - 280)),
-        DateTime: new Date().getTime() * 10000,
-        Grid_Power: '-440',
+        DateTime: Date.now(),
+        Grid_Power: Math.round(500 + Math.random() * (50 - 900)),
         GridIpv: Math.round(220 + Math.random() * (202 - 243)),
         GridVpv: Math.round(250 + Math.random() * (200 - 295)),
         Inverter_Temperature: Math.round(15 + Math.random() * (10 - 30)),
         InverterID: 'INV0000123456',
-        Load_Power: '820',
+        Load_Power: Math.round(360 + Math.random() * (350 - 400)),
         Pmeter: Math.round(35 + Math.random() * (25 - 50)),
         SOC: Math.round(55 + Math.random() * (35 - 90)),
-        Solar_Power: '0',
+        Solar_Power: Math.round(130 + Math.random() * (94 - 180)),
         SolarIpv1: Math.round(50 + Math.random() * (25 - 80)),
         SolarIpv2: Math.round(50 + Math.random() * (20 - 90)),
         SolarVpv1: Math.round(20 + Math.random() * (12 - 27)),
-        SystemID: 'SYS00001',
         Status: 'Normal',
         SolarVpv2: Math.round(23 + Math.random() * (10 - 25))
       });
@@ -128,7 +126,7 @@ class EnergyFlow extends React.Component {
                 state: { data: 'Battey Production', type: 'battery' }
               }}
               className={Battery_Power == 0 ? 'disabled-link' : ''}>
-              <img src={require('../../assets/images/battery4.png')} />
+              <img src={getBatteryImage(this.state.SOC)} />
             </Link>
           </li>
           <li>
@@ -181,6 +179,7 @@ class EnergyFlow extends React.Component {
             <label> {Solar_Power}</label>
             <label> {Grid_Power}</label>
             <label> {Load_Power}</label>
+            <label> {this.state.SOC}</label>
           </li>
         </ul>
       </div>
@@ -232,3 +231,17 @@ const SpanComponent = () => (
     <span></span>
   </React.Fragment>
 );
+const getBatteryImage = SOC => {
+  if (SOC > 0 && SOC <= 15) {
+    return require('../../assets/images/battery1.png');
+  } else if (SOC > 16 && SOC <= 50) {
+    return require('../../assets/images/battery2.png');
+  } else if (SOC > 51 && SOC <= 70) {
+    return require('../../assets/images/battery3.png');
+  } else if (SOC > 71 && SOC <= 100) {
+    return require('../../assets/images/battery4.png');
+  } else {
+    return require('../../assets/images/battery4.png');
+  }
+};
+
