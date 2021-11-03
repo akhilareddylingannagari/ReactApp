@@ -37,7 +37,7 @@
     "serverless-http": "^2.3.0",
     "shards-react": "^1.0.3",
     "url": "^0.11.0",
-    "validator": "^9.2.0"
+    "validator": "^13.7.0"
   },
   "scripts": {
     "start": "react-scripts start",
